@@ -21,7 +21,7 @@
     background:var(--base);
     color:var(--ink);
     font-family:'Jost',sans-serif;
-    font-weight:300;
+    font-weight:400;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     transition:background .25s ease,color .25s ease;
@@ -52,12 +52,24 @@
   .sw .hex{font-size:13px;letter-spacing:.05em;color:var(--muted);margin-top:3px;}
   .sw .use{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
   .pnote{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.55;}
+  /* logo system */
+  .logomark rect{fill:var(--logo);}
+  .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .lcard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+  .lc-frame{display:flex;align-items:center;justify-content:center;gap:16px;min-height:108px;margin-bottom:16px;}
+  .clearbox{border:1px dashed var(--border);border-radius:8px;padding:20px;display:flex;}
+  .lc-cap{font-size:12.5px;color:var(--muted);line-height:1.5;}
+  .lc-cap b{color:var(--ink);font-weight:500;}
+  .misuse{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;}
+  .mtile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 12px;text-align:center;}
+  .mt-vis{height:60px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .mt-cap{font-size:12px;color:var(--muted);margin-top:12px;}
   /* type */
   .type-row{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);}
   .type-row:last-child{border-bottom:none;}
   .t-display{font-weight:500;font-size:32px;}
   .t-head{font-weight:500;font-size:22px;}
-  .t-body{font-weight:300;font-size:16px;}
+  .t-body{font-weight:400;font-size:16px;}
   .t-label{font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
   /* type specimen */
   .specimen{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;}
@@ -102,16 +114,62 @@
 <div class="page">
 
   <div class="head">
-    <svg class="logo" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-label="Stacked stones logo">
-      <rect x="88" y="40" width="50" height="44" rx="15"/>
-      <rect x="30" y="96" width="104" height="44" rx="20"/>
-      <rect x="52" y="152" width="132" height="44" rx="22"/>
+    <svg class="logo" viewBox="0 0 500 405" xmlns="http://www.w3.org/2000/svg" aria-label="Stacked stones logo">
+      <rect x="130" y="0"   width="200" height="115" rx="47.5"/>
+      <rect x="30"  y="145" width="300" height="115" rx="47.5"/>
+      <rect x="70"  y="290" width="400" height="115" rx="47.5"/>
     </svg>
     <div>
       <h1>Stacked Stones</h1>
       <p>Brand Kit</p>
     </div>
   </div>
+
+  <section>
+    <div class="label">Logo system</div>
+    <div class="logo-grid">
+      <div class="lcard">
+        <div class="lc-frame">
+          <div class="clearbox">
+            <svg class="logomark" viewBox="0 0 500 405" width="70" aria-label="Clear space"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg>
+          </div>
+        </div>
+        <div class="lc-cap"><b>Clear space.</b> Keep at least x of empty space on all sides, where x is the height of one stone. Nothing else enters that zone.</div>
+      </div>
+      <div class="lcard">
+        <div class="lc-frame">
+          <svg class="logomark" viewBox="0 0 500 405" width="28" aria-label="Minimum icon size"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg>
+          <svg class="logomark" viewBox="0 0 500 405" width="64" aria-label="Lockup size"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg>
+        </div>
+        <div class="lc-cap"><b>Minimum size.</b> Icon no smaller than 24px tall on screen. Full lockup no smaller than 120px wide, or 10mm in print.</div>
+      </div>
+      <div class="lcard">
+        <div class="lc-frame">
+          <svg class="logomark" viewBox="0 0 500 405" width="78" aria-label="Icon only mark"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg>
+        </div>
+        <div class="lc-cap"><b>Icon only.</b> The stones without the wordmark, for favicons, avatars, and app icons. The mark always stays one solid color.</div>
+      </div>
+    </div>
+
+    <div class="misuse">
+      <div class="mtile">
+        <div class="mt-vis"><svg viewBox="0 0 500 405" width="56" aria-label="Recolored logo"><g fill="#789C9C"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></g></svg></div>
+        <div class="mt-cap">Don't recolor the stones</div>
+      </div>
+      <div class="mtile">
+        <div class="mt-vis"><svg class="logomark" viewBox="0 0 500 405" width="56" style="transform:scaleY(1.7);" aria-label="Stretched logo"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg></div>
+        <div class="mt-cap">Don't stretch or distort</div>
+      </div>
+      <div class="mtile">
+        <div class="mt-vis"><svg class="logomark" viewBox="0 0 500 405" width="56" style="transform:rotate(10deg);" aria-label="Rotated logo"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg></div>
+        <div class="mt-cap">Don't rotate or tilt</div>
+      </div>
+      <div class="mtile">
+        <div class="mt-vis"><svg viewBox="0 0 500 405" width="56" aria-label="Outlined logo"><g fill="none" stroke="#A99484" stroke-width="14"><rect x="137" y="7" width="186" height="101" rx="40"/><rect x="37" y="152" width="286" height="101" rx="40"/><rect x="77" y="297" width="386" height="101" rx="40"/></g></svg></div>
+        <div class="mt-cap">Don't outline or add effects</div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="label">Color palette — five</div>
@@ -129,8 +187,8 @@
     <div class="label">Typeface — Jost</div>
 
     <div class="specimen">
-      <div class="wt"><div class="glyph" style="font-weight:300;">Aa</div><div class="wname">Light&nbsp;&middot;&nbsp;300</div><div class="wrole">Body copy, long-form text</div></div>
-      <div class="wt"><div class="glyph" style="font-weight:400;">Aa</div><div class="wname">Regular&nbsp;&middot;&nbsp;400</div><div class="wrole">Subheads, emphasis in body</div></div>
+      <div class="wt"><div class="glyph" style="font-weight:300;">Aa</div><div class="wname">Light&nbsp;&middot;&nbsp;300</div><div class="wrole">Large quiet display only</div></div>
+      <div class="wt"><div class="glyph" style="font-weight:400;">Aa</div><div class="wname">Regular&nbsp;&middot;&nbsp;400</div><div class="wrole">Body copy, the default</div></div>
       <div class="wt"><div class="glyph" style="font-weight:500;">Aa</div><div class="wname">Medium&nbsp;&middot;&nbsp;500</div><div class="wrole">Headings, labels, the logotype</div></div>
       <div class="wt"><div class="glyph" style="font-weight:600;">Aa</div><div class="wname">SemiBold&nbsp;&middot;&nbsp;600</div><div class="wrole">Rare display only. Avoid in body</div></div>
     </div>
@@ -138,9 +196,10 @@
     <div class="scale">
       <div class="type-row"><div class="demo-meta"><div class="dm-name">Display</div><div class="dm-spec">Medium 500 / 32px / -1% track</div></div><div class="t-display" style="letter-spacing:-.01em;">The quiet stack holds.</div></div>
       <div class="type-row"><div class="demo-meta"><div class="dm-name">Heading</div><div class="dm-spec">Medium 500 / 22px / 0 track</div></div><div class="t-head">Built to balance and last.</div></div>
-      <div class="type-row"><div class="demo-meta"><div class="dm-name">Body</div><div class="dm-spec">Light 300 / 16px / 0 track / 1.6 lh</div></div><div class="t-body">Jost Light carries body copy: clean, geometric, and easy to read at length in either mode.</div></div>
+      <div class="type-row"><div class="demo-meta"><div class="dm-name">Body</div><div class="dm-spec">Regular 400 / 16px / 0 track / 1.6 lh</div></div><div class="t-body">Jost Regular carries body copy: clean, geometric, and easy to read at length in either mode. Light 300 is too thin for running text and is reserved for large display.</div></div>
       <div class="type-row"><div class="demo-meta"><div class="dm-name">Label</div><div class="dm-spec">Medium 500 / 12px / +22% track / caps</div></div><div class="t-label">Tracked uppercase labels</div></div>
     </div>
+    <p class="pnote">Hierarchy comes from size, weight, and case, not color. Dark and charcoal are intentionally close, so text never relies on the color gap to separate: body is Regular 400, headings step up to Medium 500, captions step down in size, and labels are Medium 500 caps with wide tracking.</p>
   </section>
 
   <section>
@@ -204,7 +263,6 @@
   </footer>
 
 </div>
-  
 
 <script>
   (function(){
