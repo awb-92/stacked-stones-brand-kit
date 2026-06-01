@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stacked Stones Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body[data-theme="dark"]{
+    --base:#1B1A18; --surface:#2A2A28; --ink:#D3CEC6;
+    --muted:rgba(211,206,198,.6); --border:#2A2A28; --logo:#D3CEC6;
+  }
+  body[data-theme="light"]{
+    --base:#D3CEC6; --surface:rgba(27,26,24,.07); --ink:#1B1A18;
+    --muted:#2A2A28; --border:rgba(27,26,24,.16); --logo:#1B1A18;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--base);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease,color .25s ease;
+  }
+  .page{max-width:880px;margin:0 auto;padding:64px 56px 72px;}
+  .toggle{
+    position:fixed;top:22px;right:22px;z-index:10;
+    font-family:'Jost',sans-serif;font-weight:500;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink);background:var(--surface);
+    border:1px solid var(--border);border-radius:999px;
+    padding:9px 16px;cursor:pointer;transition:all .2s ease;
+  }
+  .toggle:hover{border-color:var(--muted);}
+  .head{display:flex;align-items:center;gap:28px;padding-bottom:32px;border-bottom:1px solid var(--border);}
+  .logo{width:88px;height:auto;flex-shrink:0;}
+  .logo rect{fill:var(--logo);transition:fill .25s ease;}
+  .head h1{font-weight:500;font-size:32px;text-transform:uppercase;letter-spacing:.25em;line-height:1.1;}
+  .head p{color:var(--muted);font-size:15px;letter-spacing:.18em;text-transform:uppercase;margin-top:6px;}
+  section{margin-top:44px;}
+  .label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+  /* palette */
+  .swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .sw{border-radius:10px;overflow:hidden;background:var(--surface);}
+  .chip{height:104px;}
+  .sw .meta{padding:14px 14px 18px;}
+  .sw .role{font-weight:500;font-size:15px;color:var(--ink);}
+  .sw .hex{font-size:13px;letter-spacing:.05em;color:var(--muted);margin-top:3px;}
+  .sw .use{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .pnote{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.55;}
+  /* type */
+  .type-row{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);}
+  .type-row:last-child{border-bottom:none;}
+  .t-display{font-weight:500;font-size:32px;}
+  .t-head{font-weight:500;font-size:22px;}
+  .t-body{font-weight:300;font-size:16px;}
+  .t-label{font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+  /* type specimen */
+  .specimen{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;}
+  .wt{background:var(--surface);border-radius:10px;padding:20px 18px;}
+  .wt .glyph{font-size:46px;line-height:1;margin-bottom:14px;color:var(--ink);}
+  .wt .wname{font-size:13px;font-weight:500;color:var(--ink);}
+  .wt .wrole{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4;}
+  .scale .type-row .demo-meta{width:150px;flex-shrink:0;}
+  .demo-meta .dm-name{font-size:13px;font-weight:500;color:var(--ink);}
+  .demo-meta .dm-spec{font-size:11px;letter-spacing:.04em;color:var(--muted);margin-top:2px;}
+  .caps-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  .caps-card{background:var(--surface);border-radius:10px;padding:22px 22px 24px;}
+  .caps-card .ct{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .caps-card .ex-caps{font-weight:500;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);}
+  .caps-card .ex-reg{font-weight:400;font-size:21px;letter-spacing:-.01em;color:var(--ink);}
+  .caps-card .cnote{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5;}
+  .track-row{display:flex;align-items:baseline;gap:18px;padding:11px 0;border-bottom:1px solid var(--border);}
+  .track-row:last-child{border-bottom:none;}
+  .track-row .tk-spec{width:200px;flex-shrink:0;font-size:12px;color:var(--muted);}
+  .track-row .tk-ex{font-size:18px;font-weight:400;color:var(--ink);}
+  /* usage */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .usage h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;font-weight:500;color:var(--ink);}
+  .usage ul{list-style:none;}
+  .usage li{font-size:14px;padding:7px 0 7px 22px;position:relative;color:var(--ink);}
+  .usage li::before{position:absolute;left:0;top:7px;font-weight:500;color:var(--muted);}
+  .usage.do li::before{content:"+";}
+  .usage.dont li::before{content:"\2013";}
+  /* combos */
+  .combos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .combo{border-radius:10px;padding:24px 20px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;}
+  .combo .big{font-weight:500;font-size:19px;}
+  .combo .small{font-size:12px;letter-spacing:.05em;opacity:.85;}
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--border);font-size:12px;letter-spacing:.05em;color:var(--muted);display:flex;justify-content:space-between;}
+  @media print{.toggle{display:none;}.page{padding:32px;}}
+</style>
+</head>
+<body data-theme="dark">
+
+  <button class="toggle" id="themeToggle" aria-label="Toggle light or dark mode">View in light mode</button>
+
+<div class="page">
+
+  <div class="head">
+    <svg class="logo" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-label="Stacked stones logo">
+      <rect x="88" y="40" width="50" height="44" rx="15"/>
+      <rect x="30" y="96" width="104" height="44" rx="20"/>
+      <rect x="52" y="152" width="132" height="44" rx="22"/>
+    </svg>
+    <div>
+      <h1>Stacked Stones</h1>
+      <p>Brand Kit</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="label">Color palette — five</div>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#D3CEC6;border:1px solid var(--border);"></div><div class="meta"><div class="role">Stone</div><div class="hex">#D3CEC6</div><div class="use">Text in dark, base in light</div></div></div>
+      <div class="sw"><div class="chip" style="background:#789C9C;"></div><div class="meta"><div class="role">Teal</div><div class="hex">#789C9C</div><div class="use">Primary accent, fill only</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1B1A18;"></div><div class="meta"><div class="role">Dark</div><div class="hex">#1B1A18</div><div class="use">Base in dark, text in light</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A99484;"></div><div class="meta"><div class="role">Sand</div><div class="hex">#A99484</div><div class="use">Secondary accent, fill only</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2A2A28;border:1px solid var(--border);"></div><div class="meta"><div class="role">Charcoal</div><div class="hex">#2A2A28</div><div class="use">Dark-mode surfaces</div></div></div>
+    </div>
+    <p class="pnote">Dark and stone carry every role: they swap base and text between modes, both fully legible either way. Charcoal lifts cards off the dark base. Teal and sand are fills only, never text, since a midtone can't hold contrast against both a dark and a light background: put dark text on accent blocks. Nothing outside these five is used. Muted text, hairlines, and light-mode card surfaces are the dark or stone color at reduced opacity, not new tints.</p>
+  </section>
+
+  <section>
+    <div class="label">Typeface — Jost</div>
+
+    <div class="specimen">
+      <div class="wt"><div class="glyph" style="font-weight:300;">Aa</div><div class="wname">Light&nbsp;&middot;&nbsp;300</div><div class="wrole">Body copy, long-form text</div></div>
+      <div class="wt"><div class="glyph" style="font-weight:400;">Aa</div><div class="wname">Regular&nbsp;&middot;&nbsp;400</div><div class="wrole">Subheads, emphasis in body</div></div>
+      <div class="wt"><div class="glyph" style="font-weight:500;">Aa</div><div class="wname">Medium&nbsp;&middot;&nbsp;500</div><div class="wrole">Headings, labels, the logotype</div></div>
+      <div class="wt"><div class="glyph" style="font-weight:600;">Aa</div><div class="wname">SemiBold&nbsp;&middot;&nbsp;600</div><div class="wrole">Rare display only. Avoid in body</div></div>
+    </div>
+
+    <div class="scale">
+      <div class="type-row"><div class="demo-meta"><div class="dm-name">Display</div><div class="dm-spec">Medium 500 / 32px / -1% track</div></div><div class="t-display" style="letter-spacing:-.01em;">The quiet stack holds.</div></div>
+      <div class="type-row"><div class="demo-meta"><div class="dm-name">Heading</div><div class="dm-spec">Medium 500 / 22px / 0 track</div></div><div class="t-head">Built to balance and last.</div></div>
+      <div class="type-row"><div class="demo-meta"><div class="dm-name">Body</div><div class="dm-spec">Light 300 / 16px / 0 track / 1.6 lh</div></div><div class="t-body">Jost Light carries body copy: clean, geometric, and easy to read at length in either mode.</div></div>
+      <div class="type-row"><div class="demo-meta"><div class="dm-name">Label</div><div class="dm-spec">Medium 500 / 12px / +22% track / caps</div></div><div class="t-label">Tracked uppercase labels</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Full caps vs regular</div>
+    <div class="caps-grid">
+      <div class="caps-card">
+        <div class="ct">Full caps</div>
+        <div class="ex-caps" style="letter-spacing:.25em;">Stacked Stones</div>
+        <div class="cnote">Labels, eyebrows, navigation, small UI tags, and the logotype. The logo is always all caps, Medium 500, +25% tracking. Labels use +18 to +22%. Never set caps below 11px or for long passages: it stops being readable.</div>
+      </div>
+      <div class="caps-card">
+        <div class="ct">Regular case</div>
+        <div class="ex-reg">Sentence case reads best.</div>
+        <div class="cnote">Headlines and body copy, never the logo. Sentence case, never Title Case. Tracking sits at 0, tightening to -1% only at display sizes. This is the default for anything a reader actually reads.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Kerning &amp; tracking</div>
+    <div class="track-row"><div class="tk-spec">Display 28px and up&nbsp;&middot;&nbsp;-1%</div><div class="tk-ex" style="letter-spacing:-.01em;">Balance is the point.</div></div>
+    <div class="track-row"><div class="tk-spec">Headings &amp; body&nbsp;&middot;&nbsp;0 (default)</div><div class="tk-ex">Balance is the point.</div></div>
+    <div class="track-row"><div class="tk-spec">Uppercase labels&nbsp;&middot;&nbsp;+22%</div><div class="tk-ex" style="text-transform:uppercase;font-weight:500;font-size:13px;letter-spacing:.22em;">Balance is the point</div></div>
+  </section>
+
+  <section>
+    <div class="label">Accent pairings</div>
+    <div class="combos">
+      <div class="combo" style="background:#789C9C;color:#1B1A18;"><div class="big">Teal block</div><div class="small">Primary accent, dark text</div></div>
+      <div class="combo" style="background:#A99484;color:#1B1A18;"><div class="big">Sand block</div><div class="small">Secondary accent, dark text</div></div>
+      <div class="combo" style="background:var(--surface);color:var(--ink);border:1px solid var(--border);"><div class="big">Surface card</div><div class="small">Neutral elevation, body text</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid2">
+      <div class="usage do">
+        <h3>Do</h3>
+        <ul>
+          <li>Pair dark and stone as base and text; flip them between modes.</li>
+          <li>Use teal and sand as fills: blocks, badges, graphic shapes.</li>
+          <li>Always put dark text on a teal or sand fill.</li>
+          <li>Let teal lead as the primary accent, sand support.</li>
+        </ul>
+      </div>
+      <div class="usage dont">
+        <h3>Don't</h3>
+        <ul>
+          <li>Set teal or sand as text: a midtone fails on one background.</li>
+          <li>Use teal and sand at equal weight; they compete.</li>
+          <li>Drop to pure white or pure black; keep the warm neutrals.</li>
+          <li>Add color beyond the five. The set is deliberately tight.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span style="text-transform:uppercase;letter-spacing:.25em;font-weight:500;">Stacked Stones</span>
+    <span>Jost &nbsp;/&nbsp; Stone &middot; Teal &middot; Dark &middot; Sand &middot; Charcoal</span>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var body = document.body;
+    var btn = document.getElementById('themeToggle');
+    function apply(mode){
+      body.setAttribute('data-theme', mode);
+      btn.textContent = mode === 'dark' ? 'View in light mode' : 'View in dark mode';
+      try{ localStorage.setItem('ss-brand-theme', mode); }catch(e){}
+    }
+    var saved = 'dark';
+    try{ saved = localStorage.getItem('ss-brand-theme') || 'dark'; }catch(e){}
+    apply(saved);
+    btn.addEventListener('click', function(){
+      apply(body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  })();
+</script>
+
+</body>
+</html>
