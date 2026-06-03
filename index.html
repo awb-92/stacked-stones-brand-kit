@@ -45,12 +45,17 @@
   .label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
   /* palette */
   .swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
-  .sw{border-radius:10px;overflow:hidden;background:var(--surface);}
+  .sw{border-radius:10px;overflow:hidden;background:var(--surface);border:none;padding:0;width:100%;text-align:left;font-family:inherit;cursor:pointer;color:inherit;transition:transform .12s ease,box-shadow .12s ease;display:block;}
+  .sw:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.18);}
+  .sw:hover .copy{opacity:1;}
+  .sw:focus-visible{outline:2px solid var(--muted);outline-offset:2px;}
   .chip{height:104px;}
   .sw .meta{padding:14px 14px 18px;}
   .sw .role{font-weight:500;font-size:15px;color:var(--ink);}
   .sw .hex{font-size:13px;letter-spacing:.05em;color:var(--muted);margin-top:3px;}
   .sw .use{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .sw .copy{display:inline-block;margin-top:12px;font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:4px 11px;opacity:.55;transition:opacity .15s ease,color .15s ease,border-color .15s ease;}
+  .sw.copied .copy{opacity:1;color:var(--ink);border-color:var(--muted);}
   .pnote{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.55;}
   /* logo system */
   .logomark rect{fill:var(--logo);}
@@ -151,11 +156,7 @@
       </div>
     </div>
 
-    <div class="misuse">
-      <div class="mtile">
-        <div class="mt-vis"><svg viewBox="0 0 500 405" width="56" aria-label="Recolored logo"><g fill="#789C9C"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></g></svg></div>
-        <div class="mt-cap">Don't recolor the stones</div>
-      </div>
+    <div class="misuse" style="grid-template-columns:repeat(2,1fr);">
       <div class="mtile">
         <div class="mt-vis"><svg class="logomark" viewBox="0 0 500 405" width="56" style="transform:scaleY(1.7);" aria-label="Stretched logo"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg></div>
         <div class="mt-cap">Don't stretch or distort</div>
@@ -164,23 +165,19 @@
         <div class="mt-vis"><svg class="logomark" viewBox="0 0 500 405" width="56" style="transform:rotate(10deg);" aria-label="Rotated logo"><rect x="130" y="0" width="200" height="115" rx="47.5"/><rect x="30" y="145" width="300" height="115" rx="47.5"/><rect x="70" y="290" width="400" height="115" rx="47.5"/></svg></div>
         <div class="mt-cap">Don't rotate or tilt</div>
       </div>
-      <div class="mtile">
-        <div class="mt-vis"><svg viewBox="0 0 500 405" width="56" aria-label="Outlined logo"><g fill="none" stroke="#A99484" stroke-width="14"><rect x="137" y="7" width="186" height="101" rx="40"/><rect x="37" y="152" width="286" height="101" rx="40"/><rect x="77" y="297" width="386" height="101" rx="40"/></g></svg></div>
-        <div class="mt-cap">Don't outline or add effects</div>
-      </div>
     </div>
   </section>
 
   <section>
     <div class="label">Color palette — five</div>
     <div class="swatches">
-      <div class="sw"><div class="chip" style="background:#D3CEC6;border:1px solid var(--border);"></div><div class="meta"><div class="role">Stone</div><div class="hex">#D3CEC6</div><div class="use">Text in dark, base in light</div></div></div>
-      <div class="sw"><div class="chip" style="background:#789C9C;"></div><div class="meta"><div class="role">Teal</div><div class="hex">#789C9C</div><div class="use">Primary accent, fill only</div></div></div>
-      <div class="sw"><div class="chip" style="background:#1B1A18;"></div><div class="meta"><div class="role">Dark</div><div class="hex">#1B1A18</div><div class="use">Base in dark, text in light</div></div></div>
-      <div class="sw"><div class="chip" style="background:#A99484;"></div><div class="meta"><div class="role">Sand</div><div class="hex">#A99484</div><div class="use">Secondary accent, fill only</div></div></div>
-      <div class="sw"><div class="chip" style="background:#2A2A28;border:1px solid var(--border);"></div><div class="meta"><div class="role">Charcoal</div><div class="hex">#2A2A28</div><div class="use">Dark-mode surfaces</div></div></div>
+      <button type="button" class="sw" data-hex="#D3CEC6"><div class="chip" style="background:#D3CEC6;border:1px solid var(--border);"></div><div class="meta"><div class="role">Stone</div><div class="hex">#D3CEC6</div><div class="use">Text in dark, base in light</div><span class="copy">Copy</span></div></button>
+      <button type="button" class="sw" data-hex="#789C9C"><div class="chip" style="background:#789C9C;"></div><div class="meta"><div class="role">Teal</div><div class="hex">#789C9C</div><div class="use">Primary accent, fill only</div><span class="copy">Copy</span></div></button>
+      <button type="button" class="sw" data-hex="#1B1A18"><div class="chip" style="background:#1B1A18;"></div><div class="meta"><div class="role">Night</div><div class="hex">#1B1A18</div><div class="use">Base in dark, text in light</div><span class="copy">Copy</span></div></button>
+      <button type="button" class="sw" data-hex="#A99484"><div class="chip" style="background:#A99484;"></div><div class="meta"><div class="role">Sand</div><div class="hex">#A99484</div><div class="use">Secondary accent, fill only</div><span class="copy">Copy</span></div></button>
+      <button type="button" class="sw" data-hex="#2A2A28"><div class="chip" style="background:#2A2A28;border:1px solid var(--border);"></div><div class="meta"><div class="role">Charcoal</div><div class="hex">#2A2A28</div><div class="use">Dark-mode surfaces</div><span class="copy">Copy</span></div></button>
     </div>
-    <p class="pnote">Dark and stone carry every role: they swap base and text between modes, both fully legible either way. Charcoal lifts cards off the dark base. Teal and sand are fills only, never text, since a midtone can't hold contrast against both a dark and a light background: put dark text on accent blocks. Nothing outside these five is used. Muted text, hairlines, and light-mode card surfaces are the dark or stone color at reduced opacity, not new tints.</p>
+    <p class="pnote">Night and stone carry every role: they swap base and text between modes, both fully legible either way. Charcoal lifts cards off the night base. Teal and sand are fills only, never text, since a midtone can't hold contrast against both a dark and a light background: put night text on accent blocks. Nothing outside these five is used. Muted text, hairlines, and light-mode card surfaces are the dark or stone color at reduced opacity, not new tints.</p>
   </section>
 
   <section>
@@ -239,9 +236,9 @@
       <div class="usage do">
         <h3>Do</h3>
         <ul>
-          <li>Pair dark and stone as base and text; flip them between modes.</li>
+          <li>Pair night and stone as base and text; flip them between modes.</li>
           <li>Use teal and sand as fills: blocks, badges, graphic shapes.</li>
-          <li>Always put dark text on a teal or sand fill.</li>
+          <li>Always put night text on a teal or sand fill.</li>
           <li>Let teal lead as the primary accent, sand support.</li>
         </ul>
       </div>
@@ -259,7 +256,7 @@
 
   <footer>
     <span style="text-transform:uppercase;letter-spacing:.25em;font-weight:500;">Stacked Stones</span>
-    <span>Jost &nbsp;/&nbsp; Stone &middot; Teal &middot; Dark &middot; Sand &middot; Charcoal</span>
+    <span>Jost &nbsp;/&nbsp; Stone &middot; Teal &middot; Night &middot; Sand &middot; Charcoal</span>
   </footer>
 
 </div>
@@ -279,6 +276,32 @@
     btn.addEventListener('click', function(){
       apply(body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
+
+    document.querySelectorAll('.sw').forEach(function(sw){
+      sw.addEventListener('click', function(){
+        var hex = sw.getAttribute('data-hex');
+        var label = sw.querySelector('.copy');
+        var done = function(){
+          sw.classList.add('copied');
+          label.textContent = 'Copied ' + hex;
+          clearTimeout(sw._t);
+          sw._t = setTimeout(function(){
+            sw.classList.remove('copied');
+            label.textContent = 'Copy';
+          }, 1400);
+        };
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(hex).then(done).catch(function(){ fallback(hex); done(); });
+        } else { fallback(hex); done(); }
+      });
+    });
+    function fallback(text){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(ta);
+    }
   })();
 </script>
 
